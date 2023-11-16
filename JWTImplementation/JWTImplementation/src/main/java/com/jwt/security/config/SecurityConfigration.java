@@ -26,7 +26,8 @@ public class SecurityConfigration {
 
         http.csrf(cdrf->cdrf.disable())
                 .cors(cors->cors.disable())
-                .authorizeHttpRequests(auth->auth.requestMatchers("/api/**").authenticated())
+                .authorizeHttpRequests(auth->auth.requestMatchers("/api/**").authenticated()
+                            .requestMatchers("/auth/login").permitAll().anyRequest().authenticated())
                 .exceptionHandling(ex->ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
