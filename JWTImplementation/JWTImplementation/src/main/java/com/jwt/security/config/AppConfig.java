@@ -16,18 +16,13 @@ public class AppConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.builder().username("dipraj").password(passwordEncoder().encode("abc")).roles("ADMIN").build();
-        UserDetails user1 = User.builder().username("ram").password(passwordEncoder().encode("abc")).roles("ADMIN").build();
+        UserDetails user = User.builder().username("dipraj").password(passwordEncoder().encode("dipraj@123")).roles("ADMIN").build();
+        UserDetails user1 = User.builder().username("ram").password(passwordEncoder().encode("ram@123")).roles("ADMIN").build();
+        UserDetails user2 = User.builder().username("shyam").password(passwordEncoder().encode("shyam@123")).roles("ADMIN").build();
 
-        return new InMemoryUserDetailsManager(user,user1);
+        return new InMemoryUserDetailsManager(user,user1,user2);
     }
-//    @Bean
-//    public UserDetailsService userDetailsService(){
-//        UserDetails user1 = User.builder().username("rohit").password(passwordEncoder().encode("rohit123")).roles("admin").build();
-//        UserDetails user2 = User.builder().username("ram").password(passwordEncoder().encode("ram123")).roles("employee").build();
-//        UserDetails user3 = User.builder().username("shyam").password(passwordEncoder().encode("shyam123")).roles("manager").build();
-//        return new InMemoryUserDetailsManager(user1,user2,user3);
-//    }
+
     @Bean
     public PasswordEncoder passwordEncoder(){
 
